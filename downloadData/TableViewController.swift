@@ -14,7 +14,6 @@ class TableViewController: UITableViewController {
     var array = [[String: AnyObject]]()
     
     func getData(){
-        print("get")
         let url = URL(string: "https://itunes.apple.com/search?term=apple&media=software")
         let urlRequest = URLRequest(url: url!, cachePolicy:.returnCacheDataElseLoad,
                                     timeoutInterval: 30)
@@ -30,6 +29,8 @@ class TableViewController: UITableViewController {
 
                         self.array = dic["results"] as! [[String: AnyObject]]
                         print(self.array.count)
+                    
+                    self.tableView.reloadData()
                     
                     //print(self.array[0].description)
     
@@ -65,8 +66,6 @@ class TableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-            print("GGG")
-            print(self.array.count)
         return self.array.count
     }
 
